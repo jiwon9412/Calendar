@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Calender {
-	public int get_weekday(String week) {
+	/*public int get_weekday(String week) {
 		if(week.equals("SU")) {return 0;}
 		else if(week.equals("MO")) {return 1;}
 		else if(week.equals("TU")) {return 2;}
@@ -11,7 +11,7 @@ public class Calender {
 		else if(week.equals("SA")) {return 6;}
 		else {return 0;}
 
-	}
+	}*/
 	
 	public boolean is_leapyear(int year) {
 		if(year%4 == 0 && (year%100 != 0 || year%400 == 0)) {
@@ -32,17 +32,27 @@ public class Calender {
 		}
 		
 	}
-	public void print_calendar(int year, int month, String week) {
+	public void print_calendar(int year, int month) {
 		
-		
+		int sum_last = (year-1)*365 + (year-1)/4 - (year-1)/100 + (year-1)/400;
+		int sum_this = 0;
+		for(int i=1; i<month; i++) {
+			sum_this += get_maxday(year, i);
+		}
+		int sum = sum_last + sum_this;
 		int	maxday = get_maxday(year, month);
-		int weekday = get_weekday(week);
+		int weekday = 1+sum%7;
 
 		System.out.printf("   << %4d년%3d월 >>\n",year, month);
 		System.out.println(" SU MO TU WE TH FR SA");
-		for(int i=0; i<weekday; i++) {
-			System.out.printf("   ");
+		if(weekday == 7) {System.out.printf("");}
+		else {
+			for(int i=0; i<weekday; i++) {
+				System.out.printf("   ");
+			}
 		}
+		
+		
 		for(int i=1; i<=maxday; i++) {
 			System.out.printf("%3d",i);
 			if((i+weekday)%7 == 0) {
