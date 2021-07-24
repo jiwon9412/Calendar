@@ -22,16 +22,20 @@ public class Calender {
 		print_calendar();
 		
 		Scanner sc = new Scanner(System.in);
-		System.out.println("반복횟수를 입력하세요.");
-		int num = sc.nextInt();
 		
-
-		for(int i=0; i<num; i++) {
+		while(true) {
 			System.out.println("월을 입력하세요.");
+			System.out.print(">");
 			int month = sc.nextInt();
+			if(month == -1) {
+				System.out.println("Have a nice day!");
+				break;
+				}
+			if(month>12) {
+				continue;
+			}
 			System.out.printf("%d월은 %d일까지 있습니다.\n", month, get_maxday(month));			
 		}
-		System.out.println("끝!");
 	}
 
 }
