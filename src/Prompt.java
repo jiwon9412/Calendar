@@ -21,11 +21,15 @@ public class Prompt {
 				System.out.println("Have a nice day!");
 				break;
 				}
-			if(month>12) {
+			if(month > 12 || month < 1) {
 				System.out.println("1~12월 중 입력하세요.");
 				continue;
 			}
-			cal.print_calendar(year, month);
+			System.out.println("첫번째 요일을 입력하세요. (SU, MO, TU, WE, TH, FR, SA)");
+			System.out.print("WEEKDAY>");
+			String week = sc.next();
+			
+			cal.print_calendar(year, month, week);
 		}
 	}
 	public static void main(String[] args) {
