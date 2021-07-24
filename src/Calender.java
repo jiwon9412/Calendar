@@ -40,12 +40,12 @@ public class Calender {
 			sum_this += get_maxday(year, i);
 		}
 		int sum = sum_last + sum_this;
-		int	maxday = get_maxday(year, month);
+		int maxday = get_maxday(year, month);
 		int weekday = 1+sum%7;
 
 		System.out.printf("   << %4d년%3d월 >>\n",year, month);
 		System.out.println(" SU MO TU WE TH FR SA");
-		if(weekday == 7) {System.out.printf("");}
+		if(weekday == 7) {weekday = 0;}
 		else {
 			for(int i=0; i<weekday; i++) {
 				System.out.printf("   ");
